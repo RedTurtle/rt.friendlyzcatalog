@@ -48,7 +48,7 @@ function toggleSelect() {
 
 <h1 class="form-label section-bar">Objects in this catalog</h1>
 
-<form action="&dtml-URL1;" name="objectItems">
+<form action="&dtml-URL1;" name="objectItems" method="post">
 <p class="form-text">
 The catalog "&dtml-id;" contains <dtml-var results fmt=collection-length thousands_commas> record(s) in the path "&dtml-filterpath;".
 </p>
