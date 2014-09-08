@@ -245,9 +245,9 @@ def uncatalogObject(self, uid):
                     x.unindex_object(rid)
                 except KeyError:
                     LOG.error('uncatalogObject unsuccessfully '
-                              'attempted to unindex uid %s'
+                              'attempted to unindex uid %s '
                               'for index %s. ' % (str(uid), name))
-                    break
+                    continue
         del data[rid]
         del paths[rid]
         del uids[uid]
