@@ -27,6 +27,7 @@ setup(name='rt.friendlyzcatalog',
       install_requires=[
           'setuptools',
           'Products.ZCatalog',
+          'Products.CMFPlone',
           # -*- Extra requirements: -*-
       ],
       entry_points="""
