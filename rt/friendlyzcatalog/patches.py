@@ -237,7 +237,6 @@ def uncatalogObject(self, uid):
     indexes = self.indexes.keys()
     rid = uids.get(uid, None)
 
-    error = False
     if rid is not None:
         for name in indexes:
             x = self.getIndex(name)
@@ -248,13 +247,11 @@ def uncatalogObject(self, uid):
                     LOG.error('uncatalogObject unsuccessfully '
                               'attempted to unindex uid %s'
                               'for index %s. ' % (str(uid), name))
-                    error = True
                     break
-        if not error:
-            del data[rid]
-            del paths[rid]
-            del uids[uid]
-            self._length.change(-1)
+        del data[rid]
+        del paths[rid]
+        del uids[uid]
+        self._length.change(-1)
 
     else:
         LOG.error('uncatalogObject unsuccessfully '
