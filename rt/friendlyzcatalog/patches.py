@@ -216,3 +216,50 @@ def catalogObject(self, object, uid, threshold=None, idxs=None,
 
 logger.warning('Patching Catalog "catalogObject" method')
 Catalog.catalogObject = catalogObject
+
+
+# Do not stop unindexing if a single catalog entry gives issues
+def uncatalogObject(self, uid):
+    """
+    Uncatalog and object from the Catalog.  and 'uid' is a unique
+    Catalog identifier
+
+    Note, the uid must be the same as when the object was
+    catalogued, otherwise it will not get removed from the catalog
+
+    This method should not raise an exception if the uid cannot
+    be found in the catalog.
+
+    """
+    data = self.data
+    uids = self.uids
+    paths = self.paths
+    indexes = self.indexes.keys()
+    rid = uids.get(uid, None)
+
+    error = False
+    if rid is not None:
+        for name in indexes:
+            x = self.getIndex(name)
+            if hasattr(x, 'unindex_object'):
+                try:
+                    x.unindex_object(rid)
+                except KeyError:
+                    LOG.error('uncatalogObject unsuccessfully '
+                              'attempted to unindex uid %s'
+                              'for index %s. ' % (str(uid), name))
+                    error = True
+                    break
+        if not error:
+            del data[rid]
+            del paths[rid]
+            del uids[uid]
+            self._length.change(-1)
+
+    else:
+        LOG.error('uncatalogObject unsuccessfully '
+                  'attempted to uncatalog an object '
+                  'with a uid of %s. ' % str(uid))
+
+logger.warning('Patching Catalog "uncatalogObject" method')
+Catalog.uncatalogObject = uncatalogObject
