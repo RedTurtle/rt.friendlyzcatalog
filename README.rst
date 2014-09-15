@@ -2,8 +2,7 @@ Introduction
 ============
 
 The ZCatalog tool (and the Plone CatalogTool version) has a very old user interface
-with some limitation, and also some annoying behavior that commonly drive you to use
-script.
+with some limitation, and also some annoying behavior.
 
 Although using ZMI catalog UI for complex task is not good, sometimes you need it.
 
@@ -29,7 +28,9 @@ It will *not* clear the catalog before reindexing, and it will skip indexing on
 "slow" index (right not: only ``ZCTextIndex``) is skipped.
 
 So: after this call you catalog *can* contain old data in text indexes, but the reindex
-will be a lot quicker (expecially on sites where you indexes file contents)
+will be a lot quicker (expecially on sites where you indexes file contents).
+
+Obviously, if you nead a good cleanup, just use the default "*Update catalog*"
 
 Safer unindex
 -------------
@@ -39,7 +40,7 @@ indexed object. The ``uncatalogObject`` can fail just because a single index has
 about an object.
 
 The change will swallow this kind of errors (a log entry will be displayed) but the unindex
-operation will go on.
+operation will goes on.
 
 Zope and Plone versions
 =======================
@@ -49,7 +50,7 @@ Tested on Plone 4.3 (and ZCatalog version distributed with it).
 Why you don't provide those changes to Zope core?
 =================================================
 
-That's a long story. 
+That's a long story and sad story.
 
 Authors
 =======
