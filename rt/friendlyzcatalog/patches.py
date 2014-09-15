@@ -6,7 +6,7 @@ import sys
 import transaction
 from App.special_dtml import DTMLFile
 from Products.CMFPlone.CatalogTool import CatalogTool
-from Products.ZCatalog.Catalog import Catalog, CatalogError
+from Products.ZCatalog.Catalog import Catalog
 from Products.ZCatalog.Catalog import CatalogError
 from Products.ZCatalog.ProgressHandler import ZLogHandler
 from Products.ZCatalog.ZCatalog import LOG
