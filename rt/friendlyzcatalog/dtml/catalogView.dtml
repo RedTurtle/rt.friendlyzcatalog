@@ -35,7 +35,8 @@ function toggleSelect() {
 <dtml-if "'path' in this().Indexes.objectIds()">
 <form action="&dtml-URL;">
     <p class="form-text">
-        <label for="filterpath">Path:</label> <input type="text" id="filterpath" name="filterpath" value="&dtml-filterpath;"/> <br />
+        <label for="filterpath">Path:</label>
+		<input type="text" id="filterpath" name="filterpath" size="80" value="&dtml-filterpath;"/> <br />
 		<label for="query_size">Shown items</label> <input type="number" id="query_size" name="query_size" value="&dtml-query_size;"/> <br />
 		<input type="submit" value="Set Filter"/>
     </p>
